@@ -6,7 +6,7 @@ class OrangeTree
     @oranges = 0              #Fruit count
   end
   
-"Your orange tree has been planted!"
+puts "Your orange tree has been planted!"
   def one_year
     puts "A year has passed."
     if @alive
@@ -17,8 +17,10 @@ class OrangeTree
         @alive = false        #The tree dies
         puts "The tree has reached the end of its lifespan."
         puts "Rest in peace" 
-      else @height > 4
+      else if @height > 4
         @oranges = rand(6)    #The tree produces new oranges, 5 or less
+      end
+        end
     else
       puts "The tree has stopped growing."
     end
@@ -26,14 +28,42 @@ class OrangeTree
   
   def height
     if @alive
-      puts "The tree is #{@height} feet tall."
+      puts "The tree is #{@tall} feet tall."
     else
-      puts "The tree is #{@height} " feet tall."
+      puts "The tree is #{@tall} feet tall."
       puts "The tree has stopped growing."
     end
-    
-  def oranges
+  end
+  
+  def count_the_oranges
     if @alive
-      puts @oranges
+      puts @oranges.to_s
     end
   end
+  
+  def pick_an_orange
+    if @alive
+      if @oranges > 0
+        @oranges = @oranges - 1 
+        "You have picked an orange."
+      else
+        "There are no oranges to be found."
+      end
+    else
+      "The tree has stopped producing fruit."
+    end
+  end
+end
+
+
+new_tree = OrangeTree.new
+new_tree.height
+new_tree.one_year
+new_tree.one_year
+new_tree.one_year
+new_tree.one_year
+
+new_tree.one_year
+new_tree.height
+new_tree.count_the_oranges
+new_tree.pick_an_orange
